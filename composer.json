@@ -1,0 +1,20 @@
+{
+  "name": "zamzamcoders/easy-frequently-bought-together",
+  "description": "Easy Frequently Bought Together for WooCommerce",
+  "type": "wordpress-plugin",
+  "autoload": {
+    "psr-4": {
+      "Zamzamcoders\\Easybundlefbt\\": "src/"
+    },
+    "files": [
+      "src/functions.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "faridmia"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {}
+}
