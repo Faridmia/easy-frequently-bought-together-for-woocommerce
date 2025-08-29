@@ -132,12 +132,6 @@ class WooFbtFrontend
             return;
         }
 
-        $second_class = '';
-        if (isset($_POST['second_class'])) {
-            $second_class = sanitize_text_field(wp_unslash($_POST['second_class']));
-        }
-
-
 
         $fragments = array();
         $total = 0;

@@ -25,8 +25,6 @@ $bundle_ids = is_array($bundle_ids_raw) ? $bundle_ids_raw : (!empty($bundle_ids_
     $repeater_count = 1;
     foreach ($bundle_ids as $bundle_id) :
 
-        // $efbtw_allow_customization   = get_post_meta($post->ID, '_efbtw_allow_customization', true);
-
         $products_datas = [];
         $instance->reset_subtotal();
         $instance->set_bundle_id($bundle_id);
