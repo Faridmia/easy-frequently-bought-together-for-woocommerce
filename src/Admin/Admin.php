@@ -4,6 +4,7 @@ namespace Zamzamcoders\Easybundlefbt\Admin;
 
 use Zamzamcoders\Easybundlefbt\Admin\Metaboxes\Metaboxes;
 use Zamzamcoders\Easybundlefbt\Admin\Menu\Menu;
+use Zamzamcoders\Easybundlefbt\Admin\Settings\Enqueue;
 use Zamzamcoders\Easybundlefbt\Admin\Woopaneltab\Woopaneltab;
 use Zamzamcoders\Easybundlefbt\Traitval\Traitval;
 use Zamzamcoders\Easybundlefbt\Admin\AdminPanel\AdminPanel;
@@ -26,6 +27,7 @@ class Admin
     protected $menu_instance;
     protected $admin_panel_instance;
     protected $woo_panel_tab;
+    protected $build_enqueue;
 
     /**
      * Initialize the class
@@ -51,5 +53,6 @@ class Admin
         $this->admin_panel_instance = new AdminPanel();
         $this->menu_instance        = new Menu();
         $this->woo_panel_tab        = new Woopaneltab();
+        $this->build_enqueue        = new Enqueue();
     }
 }

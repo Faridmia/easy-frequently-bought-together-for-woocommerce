@@ -528,3 +528,53 @@ if (! function_exists('efbtw_clean')) {
         return is_scalar($var) ? sanitize_text_field($var) : $var;
     }
 }
+
+
+add_action('rest_api_init',  'efbtw_easy_settings_function');
+
+
+function efbtw_easy_settings_function()
+{
+    register_rest_route('efbtw/v1', '/settings', [
+        'methods'  => 'GET',
+        'callback' => 'efbtw_get_settings',
+        'permission_callback' => '__return_true'
+    ]);
+
+    register_rest_route('efbtw/v1', '/settings', [
+        'methods'  => 'POST',
+        'callback' => 'efbtw_save_settings',
+        'permission_callback' => '__return_true'
+    ]);
+}
+
+function efbtw_get_settings()
+{
+    $settings = get_option('efbtw_global_settings', []);
+    return rest_ensure_response($settings);
+}
+
+function efbtw_save_settings(WP_REST_Request $request)
+{
+
+    $nonce = $request->get_header('X-WP-Nonce');
+    if (!wp_verify_nonce($nonce, 'wp_rest')) {
+        return new WP_Error('forbidden', 'Invalid nonce', ['status' => 403]);
+    }
+
+    $data = $request->get_json_params();
+    if (!is_array($data)) {
+        return new WP_Error('invalid_data', 'Invalid settings data', ['status' => 400]);
+    }
+
+    $data['enableProductPrice'] = isset($data['enableProductPrice']) ? (bool)$data['enableProductPrice'] : true;
+    $data['enableCartPrice'] = isset($data['enableCartPrice']) ? (bool)$data['enableCartPrice'] : true;
+    $data['enableDiscountPercentage'] = isset($data['enableDiscountPercentage']) ? (bool)$data['enableDiscountPercentage'] : true;
+
+    update_option('efbtw_global_settings', $data);
+
+    return rest_ensure_response([
+        'success'  => true,
+        'settings' => $data,
+    ]);
+}

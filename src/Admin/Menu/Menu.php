@@ -15,34 +15,61 @@ class Menu
 {
     use Traitval;
 
-    /**
-     * Constructor
-     * 
-     * The constructor adds an action to the 'admin_menu' hook to add custom submenus
-     * to the WordPress admin menu.
-     */
     public function __construct()
     {
+        add_action('admin_menu', array($this, 'easy_bought_together_settings_page'));
         add_action('admin_menu', array($this, 'fbt_bundle_products_submenu'));
     }
 
     /**
-     * Add a Product Extra Data submenu under the WooCommerce menu.
-     *
-     * This function adds a submenu page for 'Product Extra Data' under the main WooCommerce menu in the WordPress admin dashboard.
-     *
-     * @since 1.0.0
-     *
-     * @return void
+     * Main Menu - Settings Page
+     */
+    function easy_bought_together_settings_page()
+    {
+        add_menu_page(
+            __('Bought Together', 'easy-frequently-bought-together-for-woocommerce'),
+            __('Bought Together', 'easy-frequently-bought-together-for-woocommerce'),
+            'manage_options',
+            'easy-bought-together',
+            array($this, 'easy_bought_together_settings_page_html'),
+            'dashicons-admin-generic',
+            20
+        );
+    }
+
+    /**
+     * Submenus under Bought Together
      */
     function fbt_bundle_products_submenu()
     {
+
         add_submenu_page(
-            'woocommerce',
-            __('Freequently Bought Together', 'easy-frequently-bought-together-for-woocommerce'),
-            __('Freequently Bought Together', 'easy-frequently-bought-together-for-woocommerce'),
+            'easy-bought-together',
+            __('All Bundles', 'easy-frequently-bought-together-for-woocommerce'),
+            __('All Bundles', 'easy-frequently-bought-together-for-woocommerce'),
             'manage_options',
             'edit.php?post_type=easyfbt_bundle'
         );
+
+
+        add_submenu_page(
+            'easy-bought-together',
+            __('Add New Bundle', 'easy-frequently-bought-together-for-woocommerce'),
+            __('Add New Bundle', 'easy-frequently-bought-together-for-woocommerce'),
+            'manage_options',
+            'post-new.php?post_type=easyfbt_bundle'
+        );
+    }
+
+    /**
+     * Settings Page HTML
+     */
+    function easy_bought_together_settings_page_html()
+    {
+?>
+        <div class="wrap">
+            <div id="easy-bought-together-settings-app"></div>
+        </div>
+<?php
     }
 }

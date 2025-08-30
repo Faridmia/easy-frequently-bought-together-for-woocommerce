@@ -29,9 +29,11 @@ if (!defined('WPINC')) {
 
 
 define('EFBTW_VERSION', '1.0.0');
-define('EFBTW_CORE_URL', plugin_dir_url(__FILE__));
 define('EFBTW_PLUGIN_ROOT', __FILE__);
 define('EFBTW_PLUGIN_PATH', plugin_dir_path(EFBTW_PLUGIN_ROOT));
+define('EFBTW_BUILD_PATH', EFBTW_PLUGIN_PATH . 'build/');
+define('EFBTW_PLUGIN_URL', plugin_dir_url(EFBTW_PLUGIN_ROOT));
+define('EFBTW_BUILD_URL', EFBTW_PLUGIN_URL . 'build/');
 define('EFBTW_PLUGIN_TITLE', 'Easy Frequently Bought Together for WooCommerce');
 
 add_action('init', 'efbtw_load_textdomain');
