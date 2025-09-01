@@ -4,7 +4,7 @@
  * Plugin Name:       Easy Frequently Bought Together for WooCommerce
  * Plugin URI:        https://github.com/faridmia/easy-frequently-bought-together-for-woocommerce
  * Description:       Enhance WooCommerce by offering smart product bundle suggestions with discounts to increase sales.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.4
  * Requires PHP: 7.4
  * Author: zamzamcoders
@@ -28,7 +28,7 @@ if (!defined('WPINC')) {
 }
 
 
-define('EFBTW_VERSION', '1.0.0');
+define('EFBTW_VERSION', '1.0.1');
 define('EFBTW_PLUGIN_ROOT', __FILE__);
 define('EFBTW_PLUGIN_PATH', plugin_dir_path(EFBTW_PLUGIN_ROOT));
 define('EFBTW_BUILD_PATH', EFBTW_PLUGIN_PATH . 'build/');
