@@ -27,7 +27,7 @@ Sell more by bundling related products — Easy Frequently Bought Together for W
 1. Unpack the download package
 2. Upload the plugin files to the `/wp-content/plugins/easy-frequently-bought-together-for-woocommerce.zip` directory, or install the plugin through the WordPress plugins screen directly.
 3. Activate the plugin through the 'Plugins' screen in WordPress.
-4. Go to WooCommerce -> Freequently Bought Together
+4. Go to WooCommerce -> Frequently Bought Together
 
 == Freequently Asked Questions ==
 

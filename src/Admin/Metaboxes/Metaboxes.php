@@ -42,7 +42,7 @@ class Metaboxes
     {
         add_meta_box(
             'efbtw_product_meta_box',
-            __('Freequently Bought Together', 'easy-frequently-bought-together-for-woocommerce'),
+            __('Frequently Bought Together', 'easy-frequently-bought-together-for-woocommerce'),
             array($this, 'efbtw_show_efbtw_product_meta_box'),
             array('easyfbt_bundle'),
             'normal',
