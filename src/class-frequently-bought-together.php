@@ -45,7 +45,10 @@ final class EASY_BUNDLE_FBT_Manager
     public function define_constants()
     {
         // general constants
-        define('EFBTW_PLUGIN_URL', plugins_url('/', EFBTW_PLUGIN_ROOT));
+        if (! defined('EFBTW_PLUGIN_URL')) {
+            define('EFBTW_PLUGIN_URL', plugins_url('/', EFBTW_PLUGIN_ROOT));
+        }
+
         define('EFBTW_PLUGIN_BASE', plugin_basename(EFBTW_PLUGIN_ROOT));
         define('EFBTW_CORE_ASSETS', EFBTW_PLUGIN_URL);
     }

@@ -168,3 +168,54 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.efbtw-color-field {
+  margin-bottom: 20px;
+}
+.efbtw-color-label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.efbtw-color-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 670px;
+  max-width: 100%;
+}
+
+.efbtw-color-field {
+  flex: 1 1 48%;
+}
+
+.efbtw-color-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.efbtw-color-main-box {
+  width: 600px;
+}
+.efbtw-color-input {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 200px;
+}
+
+.efbtw-color-text-input {
+  width: 100px;
+}
+
+.efbtw-color-preview {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

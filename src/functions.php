@@ -567,8 +567,6 @@ function efbtw_save_settings(WP_REST_Request $request)
         return new WP_Error('invalid_data', 'Invalid settings data', ['status' => 400]);
     }
 
-    $data['enableProductPrice'] = isset($data['enableProductPrice']) ? (bool)$data['enableProductPrice'] : true;
-    $data['enableCartPrice'] = isset($data['enableCartPrice']) ? (bool)$data['enableCartPrice'] : true;
     $data['enableDiscountPercentage'] = isset($data['enableDiscountPercentage']) ? (bool)$data['enableDiscountPercentage'] : true;
 
     update_option('efbtw_global_settings', $data);

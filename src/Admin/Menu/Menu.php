@@ -32,7 +32,7 @@ class Menu
             'manage_options',
             'easy-bought-together',
             array($this, 'easy_bought_together_settings_page_html'),
-            'dashicons-admin-generic',
+            EFBTW_PLUGIN_URL . 'assets/admin/images/bundle-icon.png',
             20
         );
     }

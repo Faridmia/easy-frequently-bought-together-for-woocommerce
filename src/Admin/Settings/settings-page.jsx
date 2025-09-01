@@ -40,13 +40,6 @@ const SettingsPage = () => {
   const [btnText, setBtnText] = useState("#ffffff");
   const [btnTextHover, setBtnTextHover] = useState("#ffffff");
 
-  const [boxSpacing, setBoxSpacing] = useState({
-    top: "10px",
-    right: "10px",
-    bottom: "10px",
-    left: "10px",
-  });
-
   const { createNotice } = useDispatch(noticesStore);
 
   useEffect(() => {
@@ -62,7 +55,6 @@ const SettingsPage = () => {
         setBtnBgHover(settings.btnBgHover || "#28c81f");
         setBtnText(settings.btnText || "#ffffff");
         setBtnTextHover(settings.btnTextHover || "#ffffff");
-        setBoxSpacing(settings.box_spacing);
       }
     });
   }, []);
@@ -88,7 +80,6 @@ const SettingsPage = () => {
         btnBgHover,
         btnText,
         btnTextHover,
-        box_spacing: boxSpacing,
       },
     })
       .then(() => {
@@ -124,18 +115,7 @@ const SettingsPage = () => {
               className={activeTab === "style_settings" ? "active" : ""}
               onClick={() => handleTabClick("style_settings")}
             >
-              <svg
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                class="edit-site-global-styles-icon-with-current-color"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M17.2 10.9c-.5-1-1.2-2.1-2.1-3.2-.6-.9-1.3-1.7-2.1-2.6L12 4l-1 1.1c-.6.9-1.3 1.7-2 2.6-.8 1.2-1.5 2.3-2 3.2-.6 1.2-1 2.2-1 3 0 3.4 2.7 6.1 6.1 6.1s6.1-2.7 6.1-6.1c0-.8-.3-1.8-1-3zm-5.1 7.6c-2.5 0-4.6-2.1-4.6-4.6 0-.3.1-1 .8-2.3.5-.9 1.1-1.9 2-3.1.7-.9 1.3-1.7 1.8-2.3.7.8 1.3 1.6 1.8 2.3.8 1.1 1.5 2.2 2 3.1.7 1.3.8 2 .8 2.3 0 2.5-2.1 4.6-4.6 4.6z"></path>
-              </svg>{" "}
-              Color Settings
+              💲 Color Option
             </li>
           </ul>
         </div>
@@ -204,18 +184,6 @@ const SettingsPage = () => {
                   )}
                   className="efbtw-admin-settings-control"
                 />
-                <BoxControl
-                  label={__(
-                    "Box Spacing",
-                    "easy-frequently-bought-together-for-woocommerce"
-                  )}
-                  values={boxSpacing}
-                  onChange={(nextValues) => setBoxSpacing(nextValues)}
-                  help={__(
-                    "Adjust the spacing (margin or padding) around the 'Frequently Bought Together' box.",
-                    "easy-frequently-bought-together-for-woocommerce"
-                  )}
-                />
               </CardBody>
             </Card>
           )}
@@ -229,30 +197,34 @@ const SettingsPage = () => {
                     "easy-frequently-bought-together-for-woocommerce"
                   )}
                 </h2>
+                <p>
+                  {__(
+                    "Customize colors for the Frequently Bought Together form.",
+                    "easy-frequently-bought-together-for-woocommerce"
+                  )}
+                </p>
               </CardHeader>
               <CardBody>
                 {/* Form Background Color */}
-                <div className="efbtw-color-field efbtw-color-main-box">
+                <div className="efbtw-color-field">
                   <label className="efbtw-color-label">
                     {__(
-                      "Wrapper Background Color",
+                      "Form Background Color",
                       "easy-frequently-bought-together-for-woocommerce"
                     )}
                   </label>
                   <div className="efbtw-color-input-wrapper">
                     <input
-                      type="color"
-                      value={formBgColor}
-                      onChange={(e) => setFormBgColor(e.target.value)}
-                      className="efbtw-color-input"
-                    />
-                    <input
                       type="text"
                       value={formBgColor}
                       onChange={(e) => setFormBgColor(e.target.value)}
-                      className="efbtw-color-text-input"
+                      className="efbtw-color-input"
                       placeholder="#ffffff"
                     />
+                    <span
+                      className="efbtw-color-preview"
+                      style={{ backgroundColor: formBgColor }}
+                    ></span>
                   </div>
                   <p className="description">
                     {__(
@@ -292,18 +264,16 @@ const SettingsPage = () => {
                       </label>
                       <div className="efbtw-color-input-wrapper">
                         <input
-                          type="color"
-                          value={item.value}
-                          onChange={(e) => item.setter(e.target.value)}
-                          className="efbtw-color-input"
-                        />
-                        <input
                           type="text"
                           value={item.value}
                           onChange={(e) => item.setter(e.target.value)}
-                          className="efbtw-color-text-input"
+                          className="efbtw-color-input"
                           placeholder="#000000"
                         />
+                        <span
+                          className="efbtw-color-preview"
+                          style={{ backgroundColor: item.value }}
+                        ></span>
                       </div>
                     </div>
                   ))}

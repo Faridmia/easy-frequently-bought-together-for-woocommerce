@@ -8,6 +8,13 @@ $bundle_ids_raw = get_post_meta($product_id, '_efbtw_select_bundle_product', tru
 if (empty($bundle_ids_raw)) return;
 
 $bundle_ids = is_array($bundle_ids_raw) ? $bundle_ids_raw : (!empty($bundle_ids_raw) ? explode(',', $bundle_ids_raw) : []);
+$settings = get_option('efbtw_global_settings', []);
+
+$frequenty_box_title     = isset($settings['boxTitle']) ? $settings['boxTitle'] : '';
+$frequenty_totalLabel    = isset($settings['totalLabel']) ? $settings['totalLabel'] : '';
+$frequenty_buttonLabel   = isset($settings['buttonLabel']) ? $settings['buttonLabel'] : '';
+$frequenty_enableDiscount = isset($settings['enableDiscountPercentage']) ? $settings['enableDiscountPercentage'] : '';
+
 
 ?>
 <div class="efbtw-product-bundle-wrapper">
@@ -16,7 +23,7 @@ $bundle_ids = is_array($bundle_ids_raw) ? $bundle_ids_raw : (!empty($bundle_ids_
         echo esc_html(
             apply_filters(
                 'efbtw_product_bought_together_title',
-                esc_html__('Frequently Bought Together', 'easy-frequently-bought-together-for-woocommerce')
+                $frequenty_box_title
             )
         );
         ?>
@@ -170,30 +177,34 @@ $bundle_ids = is_array($bundle_ids_raw) ? $bundle_ids_raw : (!empty($bundle_ids_
                                 <span class="efbtw-price-label">
                                     <?php
                                     // Translators:  %s total product items count
-                                    echo esc_html(sprintf(__('Price for %d items:', 'easy-frequently-bought-together-for-woocommerce'), $total_items));
+                                    echo esc_html(sprintf($frequenty_totalLabel, $total_items));
                                     ?>
                                 </span>
                                 <span class="efbtw-total-price">
                                     <?php echo wp_kses_post($formatted_price_html);
                                     ?>
                                 </span>
-                                <span class="efbtw-savings">
-                                    <?php
-                                    if ($savings > 0) {
+                                <?php
+                                if ($frequenty_enableDiscount == '1') {
+                                ?>
+                                    <span class="efbtw-savings">
+                                        <?php
+                                        if ($savings > 0) {
 
-                                        echo wp_kses_post(
+                                            echo wp_kses_post(
 
-                                            sprintf(
-                                                // Translators: %s is the discount amount (formatted price).
-                                                __('Save %s', 'easy-frequently-bought-together-for-woocommerce'),
-                                                wc_price($savings)
-                                            )
-                                        );
-                                    }
-                                    ?>
-                                </span>
+                                                sprintf(
+                                                    // Translators: %s is the discount amount (formatted price).
+                                                    __('Save %s', 'easy-frequently-bought-together-for-woocommerce'),
+                                                    wc_price($savings)
+                                                )
+                                            );
+                                        }
+                                        ?>
+                                    </span>
+                                <?php } ?>
                             </div>
-                            <button type="submit" class="single_add_to_cart_button easyefbtw-add-to-cart-btn button<?php echo esc_attr($button_class); ?>"><?php esc_html_e('ADD ALL TO CART', 'easy-frequently-bought-together-for-woocommerce'); ?></button>
+                            <button type="submit" class="single_add_to_cart_button easyefbtw-add-to-cart-btn button<?php echo esc_attr($button_class); ?>"><?php echo esc_html($frequenty_buttonLabel); ?></button>
                         </div>
                     </div>
 

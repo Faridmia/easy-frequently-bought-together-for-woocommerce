@@ -35,6 +35,7 @@
   font-size: 14px;
   height: 42px;
   box-sizing: border-box;
+  margin-top: 10px !important;
 }
 
 .fbt-bought-together-item input::placeholder {
@@ -275,4 +276,11 @@ a.button.fbt-bought-together-remove-row {
 
 .woofbt-hidden {
   display: none;
+}
+
+.toplevel_page_easy-bought-together .wp-menu-image img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
