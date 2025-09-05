@@ -4,7 +4,7 @@ Tags: woocommerce, frequently bought together, bundle deals, upsell, cross-sell
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,6 +12,8 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Sell more by bundling related products — Easy Frequently Bought Together for WooCommerce lets customers buy together with smart discounts.
 
 == Description ==
+
+**[Live Demo >](https://zamzamcoders.com/bought-together/product/album/)**
 
 **Easy Frequently Bought Together for WooCommerce** is a WooCommerce plugin that allows customers to purchase related products together with discounts, boosting sales and enhancing user experience.
 
@@ -51,6 +53,10 @@ It supports percentage (%), fixed price discounts, and custom bundle discounts.
 
 
 == Changelog ==
+
+= 1.0.2 =
+ * Settings page issue fix 
+ * Bug Fix 
 
 = 1.0.1 =
  * Plugin setings page 
