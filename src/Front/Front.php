@@ -41,23 +41,36 @@ class Front
 
 
         $settings = get_option('efbtw_global_settings', []);
-        $formBgColor           = isset($settings['formBgColor']) ? $settings['formBgColor'] : '';
-        $btnBg                   = isset($settings['btnBg']) ? $settings['btnBg'] : '';
-        $btnBgHover                   = isset($settings['btnBgHover']) ? $settings['btnBgHover'] : '';
-        $btnText                   = isset($settings['btnText']) ? $settings['btnText'] : '';
-        $btnTextHover                   = isset($settings['btnTextHover']) ? $settings['btnTextHover'] : '';
+
+        $formBgColor   = !empty($settings['formBgColor']) ? $settings['formBgColor'] : '';
+        $btnBg         = !empty($settings['btnBg']) ? $settings['btnBg'] : '';
+        $btnBgHover    = !empty($settings['btnBgHover']) ? $settings['btnBgHover'] : '';
+        $btnText       = !empty($settings['btnText']) ? $settings['btnText'] : '';
+        $btnTextHover  = !empty($settings['btnTextHover']) ? $settings['btnTextHover'] : '';
+        $box_spacing   = isset($settings['box_spacing']) && is_array($settings['box_spacing']) ? $settings['box_spacing'] : [];
+
+        $padding = '';
+        if (! empty($box_spacing)) {
+            $top    = isset($box_spacing['top']) ? $box_spacing['top'] : '0px';
+            $right  = isset($box_spacing['right']) ? $box_spacing['right'] : '0px';
+            $bottom = isset($box_spacing['bottom']) ? $box_spacing['bottom'] : '0px';
+            $left   = isset($box_spacing['left']) ? $box_spacing['left'] : '0px';
+
+            $padding = "{$top} {$right} {$bottom} {$left}";
+        }
 
         $styles = [
             ".efbtw-product-bundle-wrapper" => [
                 'background-color' => $formBgColor,
+                'padding'          => $padding,
             ],
             ".easyefbtw-add-to-cart-btn" => [
                 'background-color' => $btnBg,
-                'color' => $btnText,
+                'color'            => $btnText,
             ],
             ".easyefbtw-add-to-cart-btn:hover" => [
-                'background-color' =>  $btnBgHover,
-                'color' => $btnTextHover,
+                'background-color' => $btnBgHover,
+                'color'            => $btnTextHover,
             ],
         ];
 

@@ -1,6 +1,7 @@
 {
-  "devDependencies": {
-    "@wordpress/scripts": "^27.0.0"
+    "devDependencies": {
+    "@wordpress/scripts": "^27.0.0",
+    "sass": "^1.92.0"
   },
   "dependencies": {
     "@wordpress/api-fetch": "^6.47.0",

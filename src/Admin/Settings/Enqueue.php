@@ -22,11 +22,6 @@ class Enqueue
 
     function easy_settings_admin_enqueue($screen)
     {
-        // if ('settings_page_easy-bought-together' !== $screen) {
-        //     return;
-        // }
-
-
 
         $asset_file = EFBTW_BUILD_PATH . 'admin/index.asset.php';
 

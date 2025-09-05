@@ -72,7 +72,6 @@ class WooFbtFrontend
         }
 
         $product_id = $product->get_id();
-
         wc_get_template(
             'single-product/frequently-bought-together.php',
             array(
@@ -80,7 +79,7 @@ class WooFbtFrontend
                 'instance'   => $this,
             ),
             '',
-            EFBTW_PLUGIN_PATH . 'src/front/templates/'
+            EFBTW_PLUGIN_PATH . 'src/Front/templates/'
         );
     }
 

@@ -1,5 +1,6 @@
 import apiFetch from "@wordpress/api-fetch";
 import {
+  BoxControl,
   Button,
   Card,
   CardBody,
@@ -141,7 +142,7 @@ const SettingsPage = () => {
         </div>
 
         <div className="efbtw-admin-right-settings-content" style={{ flex: 1 }}>
-          {activeTab === "general" && (
+          {activeTab == 'general' && (
             <Card>
               <CardHeader>
                 <h2>
@@ -214,7 +215,7 @@ const SettingsPage = () => {
                   help={__(
                     "Adjust the spacing (margin or padding) around the 'Frequently Bought Together' box.",
                     "easy-frequently-bought-together-for-woocommerce"
-                  )}
+                  )} className="efbtw-admin-settings-control"
                 />
               </CardBody>
             </Card>
